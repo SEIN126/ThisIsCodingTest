@@ -9,8 +9,7 @@ count = 0
 for i in range(1, len(data)):
     now = data[i]
     if prev != now:
-        count += 1
-        
+        count += 1       
     prev = now
 
 # 0->1 또는 1->0이 
