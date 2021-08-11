@@ -29,6 +29,8 @@ def solution(food_times, k):
             # 빼줄 시간이 k보다 크다면 남은 list를 다시 음식 번호 순으로 sort하고 k % (남은 음식의 길이)로 다음 음식의 번호를 구한다.
             else:
                 left = sorted(food_dict[i:], key = itemgetter(1))
+                # left = food_dict[i:].sort(key = lambda x:x[1])  # 원본(food_dict[i:])는 정렬하되 반환값은  None이다.
+                # left = sorted(food_dict[i:], key = lambda x:x[1])  # 원본에는 영향 없고 정렬된 리스트 반환한다.
                 k %= food_len
                 return left[k][1]
 
