@@ -1,2 +1,3 @@
 # ThisIsCodingTest
-week 01
+week 01_Greedy  
+week 02_Implementation(구현)  
