@@ -6,6 +6,7 @@ Common Problem
 Individual Problem  
 - wonseok : flippingString
 - sein : GuildofAdeventures
+- donggu : 
 
 ## [08.10 - 08.16] week 02_Implementation(구현)  
 Common Problem  
@@ -14,6 +15,7 @@ Common Problem
 Individual Problem  
 - wonseok : snake (SamSung)
 - sein : 
+- donggu : 
 
 [08.17 - 08.23] week 03_DFS/BFS  
 [08.24 - 08.30] week 04_Sort  
