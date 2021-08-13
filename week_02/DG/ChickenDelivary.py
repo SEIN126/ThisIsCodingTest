@@ -6,23 +6,7 @@ Created on Fri Aug 13 13:40:43 2021
 """
 
 '15686 치킨배달'
-def combinations(iterable, r):
-    pool = tuple(iterable)
-    n = len(pool)
-    if r > n:
-        return
-    indices = list(range(r))
-    yield tuple(pool[i] for i in indices)
-    while True:
-        for i in reversed(range(r)):
-            if indices[i] != i + n - r:
-                break
-        else:
-            return
-        indices[i] += 1
-        for j in range(i+1, r):
-            indices[j] = indices[j-1] + 1
-        yield tuple(pool[i] for i in indices)
+from itertools import combinations
         
 N, M = map(int,input().split())
 mapp = []
