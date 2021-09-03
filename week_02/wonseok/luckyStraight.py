@@ -1,5 +1,6 @@
 score = input()
 
+
 # 중간 지점
 n = len(score) // 2
 
