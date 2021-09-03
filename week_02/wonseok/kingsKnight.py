@@ -22,5 +22,5 @@ for m in movement:
   new_col = col + m[1]
   if new_row>=1 and new_row<=8 and new_col>=1 and new_col<=8:
     count += 1 
-    
+
 print(count)
