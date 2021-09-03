@@ -93,7 +93,5 @@ while True:
       map_[px-1][py-1] = 0
     t += 1
       
-  print(map_)
-    
-    
+  print(map_)  
 print(t)
