@@ -48,7 +48,6 @@ for t in range(len(order)):
   # 방향이전환이 필우할 경우
   if order[t] != 0:
     direction = turn(direction, order[t])
-
   
   
   # 방향 전환이 아닐때
