@@ -1,5 +1,4 @@
 def solution(s):
-  
     answer = len(s)
     # 1 개 단위로 부터 압축뉘단위를 늘려가며 확인
     for step in range(1, len(s) //2 + 1):
@@ -21,5 +20,4 @@ def solution(s):
         # 만들어진 압축 문자열이 가장 짧은 것이 정답
         answer = min(answer, len(encoded))
     return answer
-  
 # print(solution("ababcdcdababcdcd"))
