@@ -1,7 +1,6 @@
 h = int(input())
 
 count = 0
-
 for i in range(h):
   for j in range(60):
     for k in range(60):
