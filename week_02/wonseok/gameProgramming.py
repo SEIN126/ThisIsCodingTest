@@ -24,7 +24,6 @@ def turn_left():
     direction = 0
   return direction
 
-
 count = 1
 turn_time = 0
 while True:
