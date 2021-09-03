@@ -5,7 +5,6 @@ M = list(map(str, input().split()))
 dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
 
-
 def movement(result, direction):
     new_x = result[0] + dx[direction]
     new_y = result[1] + dy[direction]
