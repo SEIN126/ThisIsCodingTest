@@ -10,7 +10,6 @@ for k in range(K):
   ax, ay = map(int, input().split())
   apple[ax-1][ay-1] = 1
   
-  
 # direction 
 # 동 남 서 북
 # 0  1  2  3
