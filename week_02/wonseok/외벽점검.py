@@ -1,36 +1,41 @@
 from itertools import permutations
 
 def solution(n, weak, dist):
-  # 친구들 다 투입 해도 안될때를 위해 초기화
-  answer = len(dist) + 1
+    answer = len(dist) + 1
+    
+    length = len(weak)  # 공사가 필요한 위치 수
+    # 원형을 일자로 펴준다
+    for i in range(length):
+        weak.append(weak[i] + n)
+    
+    # 0~>length 돌아가면서 확인
+    for start in range(length):
+        # 친구 투입하는 순서 경우의 수 모두 고려
+        for distance in permutations(dist, len(dist)):
+            # 첫번째 친구 투입
+            count = 1
+            position = weak[start] + distance[count-1]  # 친구가 갈 수 있는 위치
+            
+            for k in range(start+1, j+length):
+                # 다음 위치까지 친구가 도달 못 한다면
+                if position < weak[k]:
+                    # 다음 친구 투입
+                    count += 1  
+                    if count > len(dist):  # 모든 친구가 다 투입 되었다면 종료
+                        break
+                    position = weak[k] + distance[count-1]  # 다음 친구가 갈 수 있는 위치
+            answer = min(answer, count)  # 투입된 친구의 수
 
-  # 원형의 weak를 일자로 펴준다
-  len_weak = len(weak)
-  for w in range(len_weak):
-    weak.append(weak[w] + n)
-
-  for start in range(len_weak):
-    # 모든 친구의 순열
-    for friends in permutations(dist, len(dist)):
-      count = 1  # 시작 지점마다 필요한 친구의 수 초기화
-      next_pos = weak[start] + friends[count - 1]  #첫번째 친구가 이동 할 수 있는 위치
-
-      # 갈 수 있는 위치와 모든 weak 확인
-      for index in range(start, start + len_weak):
-        # 다음 weak까지 갈 수 없다면 다음 친구 투입
-        if next_pos < weak[index]:
-          count += 1
-          # 더 이상 투입할 친구가 없다면
-          if count > len(dist):
-            break
-          next_pos = weak[index] + friends[count - 1]  # 다음 친구가 갈 수 있는 위치
-      answer = min(answer, count)
-
-  if answer > len(dist):
-    return -1
-  else:
+    if answer > len(dist):
+        return -1
+    else:
+        return answer
+                    
+                    
+                
+            
+    
+    
+    
+    
     return answer
-
-
-print(solution(12, [1,5,6,10], [1,2,3,4]))
-print(solution(12, [1,3,4,9,10], [3,5,7]))
