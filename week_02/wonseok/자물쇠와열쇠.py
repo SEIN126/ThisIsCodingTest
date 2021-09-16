@@ -11,11 +11,15 @@ def rotate(a):
     return result
 
 def check(key, lock):
+    print("===========Check======")
+    print(lock)
+    print(key)
     key_col = 0
     for c in range(len(lock)):
         key_row = 0
         for r in range(len(lock[0])):
-            if lock[c][r] != key[key_col][key_row]:
+            # 홈과 홈 또는 돌기와 돌기가 만날 경우
+            if lock[c][r] == key[key_col][key_row]:
                 return False
             key_row += 1
         key_col += 1
@@ -28,11 +32,14 @@ def solution(key, lock):
     # 모든 위치에 모든 가능한 회전된 키를 삽입해본다.
     row_len = len(lock[0])
     col_len = len(lock)
-    for c in range(row_len):
-        for r in range(col_len):
-            new_lock = lock[c:col_len][r:row_len]
+    for c in range(col_len):
+        for r in range(row_len):
+            new_lock = [row[r:row_len] for row in lock[c:col_len]]
             for k in key_list:
                 if check(k, new_lock):
                     return True
     
     return False
+
+
+print(solution([[0, 0, 0], [1, 0, 0], [0, 1, 1]], [[1, 1, 1], [1, 1, 0], [1, 0, 1]]))
