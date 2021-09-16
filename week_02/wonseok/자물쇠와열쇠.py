@@ -1,3 +1,4 @@
+import copy
 # 90도 회전 함수
 def rotate(a):
     n = len(a)
@@ -10,36 +11,39 @@ def rotate(a):
             result[j][n-i-1] = a[i][j]
     return result
 
-def check(key, lock):
+def check(key, lock, c, r):
     print("===========Check======")
     print(lock)
     print(key)
+    lock_copy = copy.deepcopy(lock)
     key_col = 0
-    for c in range(len(lock)):
+    for cc in range(c, len(lock_copy)):
         key_row = 0
-        for r in range(len(lock[0])):
-            # 홈과 홈 또는 돌기와 돌기가 만날 경우
-            if lock[c][r] == key[key_col][key_row]:
-                return False
+        for rr in range(r, len(lock_copy[0])):
+            lock_copy[cc][rr] += key[key_col][key_row]   
             key_row += 1
         key_col += 1
+
+    print(lock_copy)
+    for lock_row in lock_copy:
+      for i in lock_row:
+        if i != 1:
+          return False
     return True
     
 def solution(key, lock):
     # 원본, 90도 회전, 180도 회전, 270도 회전한 key의 list
     key_list = [key, rotate(key), rotate(rotate(key)), rotate(rotate(rotate(key)))]
+    lock_list = [lock, rotate(lock), rotate(rotate(lock)), rotate(rotate(rotate(lock)))]
     
     # 모든 위치에 모든 가능한 회전된 키를 삽입해본다.
-    row_len = len(lock[0])
-    col_len = len(lock)
-    for c in range(col_len):
-        for r in range(row_len):
-            new_lock = [row[r:row_len] for row in lock[c:col_len]]
-            for k in key_list:
-                if check(k, new_lock):
-                    return True
+    for locks in lock_list:
+        row_len = len(locks[0])
+        col_len = len(locks)
+        for c in range(col_len):
+            for r in range(row_len):
+                for k in key_list:
+                    if check(k, locks, c, r):
+                        return True
     
     return False
-
-
-print(solution([[0, 0, 0], [1, 0, 0], [0, 1, 1]], [[1, 1, 1], [1, 1, 0], [1, 0, 1]]))
