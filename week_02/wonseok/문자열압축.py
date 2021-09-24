@@ -21,4 +21,5 @@ def solution(s):
         answer = min(answer, len(encoded))
     return answer
 
+
 # print(solution("ababcdcdababcdcd"))
